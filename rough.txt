@@ -1,0 +1,20 @@
+db.product.insert(
+    {
+        _id: 3, 
+        name: "Rubber", 
+        price: 5, 
+        stock: 43, 
+        reviews: [
+            {
+                authorName: "Sally",
+                rating: 5,
+                review: "Best rubber yet"
+            }, 
+            {
+                authorName: "John",
+                rating: 4,
+                review: "Superb"
+            }
+        ]
+    }
+)body-parser ejs express

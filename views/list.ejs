@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .rainbow-letters {
+            margin-top: 0px;
+            margin-bottom: 10px;
+            font-family: sans-serif;
+            font-size: 6rem;
+            background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <% if (kindOfDay==="Saturday" || kindOfDay==="Sunday" || kindOfDay==="Monday" || kindOfDay==="Tuesday" || kindOfDay==="Wednesday" || kindOfDay==="Thursday" || kindOfDay==="Friday"){ %>
+        <h1 class="rainbow-letters heading box">today is a <%=kindOfDay%>
+        </h1>
+        <% }else{ %>
+            <h1 class="heading box" style="color: black"><%=kindOfDay%>
+            </h1>
+            <% } %>
+
+                <div class="box">
+                    <% task.forEach(function(item){ %>
+                        <div class="item">
+                            <form action="/delete" method="post">
+                                
+                                <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
+                                <span>
+                                    <%= item.name %>
+                                </span>
+                                <input type="hidden" name="listDlt" value="<%=kindOfDay%>">
+
+                            </form>
+                        </div>
+                        <% }); %>
+                        <form class="item" action="/" method="post" autocomplete="off">
+                            <input type="text" name="newItem" placeholder="Add new task">
+                            <button type="submit" name="button" value=<%= kindOfDay  %>>+</button>
+                        </form>
+                </div>
+
+            <footer>credits Rayyan Shaikh</footer>
+
+</body>
+
+</html>
