@@ -141,6 +141,9 @@ app.get("/:customListName", function(req, res){
     // res.render("list", {kindOfDay: dday, task: list.items })
 })
 
-app.listen(5500, () => {
+let port = process.env.PORT
+if (port == null || port == ""){ port = 5500; }
+
+app.listen(port, () => {
     console.log("server up and running on port 5500.")
 })
